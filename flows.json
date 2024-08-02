@@ -99,27 +99,6 @@
         "credsFromSettings": false
     },
     {
-        "id": "830ea4b9e10e7bdc",
-        "type": "mqtt in",
-        "z": "5f06c812fee9c317",
-        "name": "",
-        "topic": "/test",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "2a5249aff8f14129",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 250,
-        "y": 360,
-        "wires": [
-            [
-                "94c62f312c87da41"
-            ]
-        ]
-    },
-    {
         "id": "3d3173ac35ec548a",
         "type": "mqtt out",
         "z": "5f06c812fee9c317",
@@ -133,8 +112,8 @@
         "correl": "",
         "expiry": "",
         "broker": "2a5249aff8f14129",
-        "x": 350,
-        "y": 560,
+        "x": 370,
+        "y": 420,
         "wires": []
     },
     {
@@ -158,8 +137,8 @@
         "topic": "",
         "payload": "\"jonas\"",
         "payloadType": "str",
-        "x": 130,
-        "y": 560,
+        "x": 150,
+        "y": 420,
         "wires": [
             [
                 "3d3173ac35ec548a"
@@ -179,8 +158,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 620,
-        "y": 500,
+        "x": 640,
+        "y": 360,
         "wires": []
     },
     {
@@ -193,8 +172,8 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 400,
-        "y": 720,
+        "x": 420,
+        "y": 580,
         "wires": [
             [
                 "94c62f312c87da41"
@@ -223,51 +202,13 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 140,
-        "y": 720,
+        "x": 160,
+        "y": 580,
         "wires": [
             [
                 "2ae7cebe578a6eef"
             ]
         ]
-    },
-    {
-        "id": "2e4dd4f8ea9b5211",
-        "type": "mqtt in",
-        "z": "5f06c812fee9c317",
-        "name": "",
-        "topic": "/postgres",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "2a5249aff8f14129",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 260,
-        "y": 260,
-        "wires": [
-            [
-                "d1545a0f4b8b46f9"
-            ]
-        ]
-    },
-    {
-        "id": "d1545a0f4b8b46f9",
-        "type": "debug",
-        "z": "5f06c812fee9c317",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload.record",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 660,
-        "y": 260,
-        "wires": []
     },
     {
         "id": "a3344482a15476b7",
@@ -277,8 +218,8 @@
         "motion": false,
         "env": true,
         "stick": true,
-        "x": 160,
-        "y": 940,
+        "x": 180,
+        "y": 800,
         "wires": [
             [
                 "b943078cba63ef0f"
@@ -297,8 +238,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 630,
-        "y": 780,
+        "x": 650,
+        "y": 640,
         "wires": [
             [
                 "174adf6316713cc4"
@@ -315,8 +256,8 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 830,
-        "y": 660,
+        "x": 850,
+        "y": 520,
         "wires": [
             []
         ]
@@ -338,8 +279,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 380,
-        "y": 860,
+        "x": 400,
+        "y": 720,
         "wires": [
             [
                 "94c62f312c87da41",
@@ -360,8 +301,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 920,
-        "y": 1040,
+        "x": 940,
+        "y": 900,
         "wires": []
     },
     {
@@ -379,8 +320,8 @@
         "amqpProperties": "{ \"headers\": {} }",
         "rpcTimeoutMilliseconds": 3000,
         "outputs": 0,
-        "x": 530,
-        "y": 1220,
+        "x": 550,
+        "y": 1080,
         "wires": []
     },
     {
@@ -402,8 +343,8 @@
         "queueDurable": false,
         "queueAutoDelete": true,
         "headers": "{}",
-        "x": 610,
-        "y": 1040,
+        "x": 630,
+        "y": 900,
         "wires": [
             [
                 "e9d02db8240f0f03"
@@ -431,8 +372,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 120,
-        "y": 460,
+        "x": 140,
+        "y": 320,
         "wires": [
             [
                 "98dfed56ddf2ae63"
@@ -451,8 +392,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 330,
-        "y": 460,
+        "x": 350,
+        "y": 320,
         "wires": [
             [
                 "94c62f312c87da41"
@@ -471,8 +412,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 650,
-        "y": 920,
+        "x": 670,
+        "y": 780,
         "wires": [
             [
                 "174adf6316713cc4"
