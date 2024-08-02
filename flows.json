@@ -89,6 +89,16 @@
         "passwordFieldType": "str"
     },
     {
+        "id": "a6255b8d1e792fdc",
+        "type": "amqp-broker",
+        "name": "local",
+        "host": "localhost",
+        "port": "5672",
+        "vhost": "",
+        "tls": false,
+        "credsFromSettings": false
+    },
+    {
         "id": "830ea4b9e10e7bdc",
         "type": "mqtt in",
         "z": "5f06c812fee9c317",
@@ -152,7 +162,8 @@
         "y": 560,
         "wires": [
             [
-                "3d3173ac35ec548a"
+                "3d3173ac35ec548a",
+                "5c6fb2fe3b8ecb6e"
             ]
         ]
     },
@@ -271,7 +282,8 @@
         "y": 940,
         "wires": [
             [
-                "b943078cba63ef0f"
+                "b943078cba63ef0f",
+                "5c6fb2fe3b8ecb6e"
             ]
         ]
     },
@@ -287,8 +299,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 610,
-        "y": 1100,
+        "x": 630,
+        "y": 940,
         "wires": [
             [
                 "174adf6316713cc4"
@@ -305,8 +317,8 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 650,
-        "y": 800,
+        "x": 670,
+        "y": 780,
         "wires": [
             []
         ]
@@ -328,12 +340,75 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 360,
-        "y": 1120,
+        "x": 380,
+        "y": 860,
         "wires": [
             [
                 "dc32b71c297b1fa2",
                 "94c62f312c87da41"
+            ]
+        ]
+    },
+    {
+        "id": "d45d370b675d74c3",
+        "type": "debug",
+        "z": "5f06c812fee9c317",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "5c6fb2fe3b8ecb6e",
+        "type": "amqp-out",
+        "z": "5f06c812fee9c317",
+        "name": "",
+        "broker": "a6255b8d1e792fdc",
+        "reconnectOnError": false,
+        "exchangeName": "",
+        "exchangeType": "topic",
+        "exchangeRoutingKey": "hello",
+        "exchangeRoutingKeyType": "str",
+        "exchangeDurable": true,
+        "amqpProperties": "{ \"headers\": {} }",
+        "rpcTimeoutMilliseconds": 3000,
+        "outputs": 0,
+        "x": 530,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "6326c7b5adc2fe2e",
+        "type": "amqp-in",
+        "z": "5f06c812fee9c317",
+        "name": "",
+        "broker": "a6255b8d1e792fdc",
+        "prefetch": 0,
+        "reconnectOnError": false,
+        "noAck": false,
+        "exchangeName": "",
+        "exchangeType": "topic",
+        "exchangeRoutingKey": "hello",
+        "exchangeDurable": false,
+        "queueName": "hello",
+        "queueType": "classic",
+        "queueExclusive": false,
+        "queueDurable": false,
+        "queueAutoDelete": true,
+        "headers": "{}",
+        "x": 690,
+        "y": 1380,
+        "wires": [
+            [
+                "d45d370b675d74c3"
             ]
         ]
     }
