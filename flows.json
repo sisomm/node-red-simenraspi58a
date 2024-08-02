@@ -156,7 +156,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "\"hallo\"",
+        "payload": "\"jonas\"",
         "payloadType": "str",
         "x": 130,
         "y": 560,
