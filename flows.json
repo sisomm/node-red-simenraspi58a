@@ -162,8 +162,7 @@
         "y": 560,
         "wires": [
             [
-                "3d3173ac35ec548a",
-                "5c6fb2fe3b8ecb6e"
+                "3d3173ac35ec548a"
             ]
         ]
     },
@@ -282,8 +281,7 @@
         "y": 940,
         "wires": [
             [
-                "b943078cba63ef0f",
-                "5c6fb2fe3b8ecb6e"
+                "b943078cba63ef0f"
             ]
         ]
     },
@@ -300,7 +298,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 940,
+        "y": 780,
         "wires": [
             [
                 "174adf6316713cc4"
@@ -317,8 +315,8 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 670,
-        "y": 780,
+        "x": 830,
+        "y": 660,
         "wires": [
             []
         ]
@@ -344,8 +342,8 @@
         "y": 860,
         "wires": [
             [
-                "dc32b71c297b1fa2",
-                "94c62f312c87da41"
+                "94c62f312c87da41",
+                "5c6fb2fe3b8ecb6e"
             ]
         ]
     },
@@ -362,8 +360,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 980,
-        "y": 1180,
+        "x": 920,
+        "y": 1040,
         "wires": []
     },
     {
@@ -404,11 +402,80 @@
         "queueDurable": false,
         "queueAutoDelete": true,
         "headers": "{}",
-        "x": 690,
-        "y": 1380,
+        "x": 610,
+        "y": 1040,
         "wires": [
             [
-                "d45d370b675d74c3"
+                "e9d02db8240f0f03"
+            ]
+        ]
+    },
+    {
+        "id": "ca0d67624d4a29d5",
+        "type": "inject",
+        "z": "5f06c812fee9c317",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 460,
+        "wires": [
+            [
+                "98dfed56ddf2ae63"
+            ]
+        ]
+    },
+    {
+        "id": "98dfed56ddf2ae63",
+        "type": "function",
+        "z": "5f06c812fee9c317",
+        "name": "timecheck",
+        "func": "var d=new Date();\nmsg.payload=d.toISOString();\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 460,
+        "wires": [
+            [
+                "94c62f312c87da41"
+            ]
+        ]
+    },
+    {
+        "id": "e9d02db8240f0f03",
+        "type": "function",
+        "z": "5f06c812fee9c317",
+        "name": "preparetimequery",
+        "func": "var d=new Date();\nmsg.query = \"INSERT INTO environment (mtime, measurement) values ($1,$2)\";\nmsg.params = [d.toISOString(), msg.payload];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 920,
+        "wires": [
+            [
+                "174adf6316713cc4"
             ]
         ]
     }
