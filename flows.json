@@ -135,9 +135,9 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "\"jonas\"",
+        "payload": "\"message\"",
         "payloadType": "str",
-        "x": 150,
+        "x": 160,
         "y": 420,
         "wires": [
             [
