@@ -218,31 +218,11 @@
         "motion": false,
         "env": true,
         "stick": true,
-        "x": 180,
-        "y": 800,
+        "x": 160,
+        "y": 720,
         "wires": [
             [
                 "b943078cba63ef0f"
-            ]
-        ]
-    },
-    {
-        "id": "dc32b71c297b1fa2",
-        "type": "function",
-        "z": "5f06c812fee9c317",
-        "name": "preparequery",
-        "func": "msg.query =\"INSERT INTO environment (measurement) values ($1)\";\nmsg.params=[msg.payload];\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 650,
-        "y": 640,
-        "wires": [
-            [
-                "174adf6316713cc4"
             ]
         ]
     },
@@ -256,7 +236,7 @@
         "split": false,
         "rowsPerMsg": 1,
         "outputs": 1,
-        "x": 850,
+        "x": 970,
         "y": 520,
         "wires": [
             []
@@ -284,7 +264,7 @@
         "wires": [
             [
                 "94c62f312c87da41",
-                "5c6fb2fe3b8ecb6e"
+                "c06ebbb373fcdab1"
             ]
         ]
     },
@@ -320,8 +300,8 @@
         "amqpProperties": "{ \"headers\": {} }",
         "rpcTimeoutMilliseconds": 3000,
         "outputs": 0,
-        "x": 550,
-        "y": 1080,
+        "x": 530,
+        "y": 980,
         "wires": []
     },
     {
@@ -347,7 +327,7 @@
         "y": 900,
         "wires": [
             [
-                "e9d02db8240f0f03"
+                "c1b6c2e71a10237b"
             ]
         ]
     },
@@ -401,19 +381,39 @@
         ]
     },
     {
-        "id": "e9d02db8240f0f03",
+        "id": "c06ebbb373fcdab1",
         "type": "function",
         "z": "5f06c812fee9c317",
-        "name": "preparetimequery",
-        "func": "var d=new Date();\nmsg.query = \"INSERT INTO environment (mtime, measurement) values ($1,$2)\";\nmsg.params = [d.toISOString(), msg.payload];\n\nreturn msg;",
+        "name": "addtime",
+        "func": "var d = new Date();\nvar newrec={};\nnewrec.datepart=d.toISOString();\nnewrec.measpart=msg.payload;\n\nmsg.payload=newrec;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 670,
-        "y": 780,
+        "x": 320,
+        "y": 1040,
+        "wires": [
+            [
+                "5c6fb2fe3b8ecb6e"
+            ]
+        ]
+    },
+    {
+        "id": "c1b6c2e71a10237b",
+        "type": "function",
+        "z": "5f06c812fee9c317",
+        "name": "splitmessage",
+        "func": "msg.query = \"INSERT INTO environment (mtime, measurement) values ($1,$2)\";\nmsg.params = [msg.payload.datepart, msg.payload.measpart];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 580,
         "wires": [
             [
                 "174adf6316713cc4"
