@@ -281,8 +281,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 900,
+        "x": 1080,
+        "y": 620,
         "wires": []
     },
     {
@@ -323,8 +323,8 @@
         "queueDurable": false,
         "queueAutoDelete": true,
         "headers": "{}",
-        "x": 630,
-        "y": 900,
+        "x": 610,
+        "y": 660,
         "wires": [
             [
                 "c1b6c2e71a10237b"
@@ -405,7 +405,7 @@
         "type": "function",
         "z": "5f06c812fee9c317",
         "name": "splitmessage",
-        "func": "msg.query = \"INSERT INTO environment (mtime, measurement) values ($1,$2)\";\nmsg.params = [msg.payload.datepart, msg.payload.measpart];\nreturn msg;",
+        "func": "msg.query = \"INSERT INTO environment (mtime, measurement) values ($1,$2)\";\nmsg.params = [msg.payload.datepart, msg.payload.measpart];\n\n//Remember the values in the flow variable in case of errors\nflow.set('datepart',msg.payload.datepart);\nflow.set('measpart',msg.payload.measpart);\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -417,6 +417,68 @@
         "wires": [
             [
                 "174adf6316713cc4"
+            ]
+        ]
+    },
+    {
+        "id": "251ca1b8d6822047",
+        "type": "catch",
+        "z": "5f06c812fee9c317",
+        "name": "",
+        "scope": [
+            "174adf6316713cc4"
+        ],
+        "uncaught": false,
+        "x": 850,
+        "y": 660,
+        "wires": [
+            [
+                "9069250d83a80d6f"
+            ]
+        ]
+    },
+    {
+        "id": "55843b99fc0f43e5",
+        "type": "delay",
+        "z": "5f06c812fee9c317",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "15",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1120,
+        "y": 780,
+        "wires": [
+            [
+                "5c6fb2fe3b8ecb6e"
+            ]
+        ]
+    },
+    {
+        "id": "9069250d83a80d6f",
+        "type": "function",
+        "z": "5f06c812fee9c317",
+        "name": "Putbackonqueue",
+        "func": "var newrec = {};\nnewrec.datepart = flow.get('datepart');\nnewrec.measpart = flow.get('measpart');\n\nmsg.payload = newrec;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 780,
+        "wires": [
+            [
+                "55843b99fc0f43e5"
             ]
         ]
     }
