@@ -433,7 +433,7 @@
         "y": 660,
         "wires": [
             [
-                "9069250d83a80d6f"
+                "b8144ce09f451715"
             ]
         ]
     },
@@ -463,19 +463,33 @@
         ]
     },
     {
-        "id": "9069250d83a80d6f",
-        "type": "function",
+        "id": "b8144ce09f451715",
+        "type": "change",
         "z": "5f06c812fee9c317",
-        "name": "Putbackonqueue",
-        "func": "var newrec = {};\nnewrec.datepart = flow.get('datepart');\nnewrec.measpart = flow.get('measpart');\n\nmsg.payload = newrec;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 890,
-        "y": 780,
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "datepart",
+                "pt": "msg",
+                "to": "measpart",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "measpart",
+                "pt": "msg",
+                "to": "measpart",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 820,
         "wires": [
             [
                 "55843b99fc0f43e5"
